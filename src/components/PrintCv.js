@@ -15,7 +15,7 @@ export default function PrintCv() {
 
   useEffect(async () => {
     const response = await fetch(
-      `http://localhost:3001/curriculum/${cookies.get("curriculum_id")}`
+      `https://miprimercurriculum-backend.herokuapp.com/curriculum/${cookies.get("curriculum_id")}`
     );
     const body = await response.json();
     console.log(body);

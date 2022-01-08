@@ -42,7 +42,7 @@ export default function Create() {
       "cvEmail: ",
       cvEmail
     );
-    const url = "http://localhost:3001/createcv";
+    const url = "https://miprimercurriculum-backend.herokuapp.com/createcv";
     const register = {
       name: name,
       description: description,

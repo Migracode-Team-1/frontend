@@ -14,7 +14,7 @@ export default function Header() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light row">
         <div className="container-fluid">
-          <a href="http://localhost:3000/">
+          <a href="https://miprimercurriculum.herokuapp.com">
             <img
               src={Logo}
               alt="Logo"
