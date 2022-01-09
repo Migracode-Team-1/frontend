@@ -66,7 +66,7 @@ export default function PrintCv() {
                 </PDFDownloadLink>
               </div>
             </div>
-            <div className="col p-5 embed-responsive-item">
+            <div className="col p-5">
               {/* <h5>CV</h5> */}
              
                 <>
