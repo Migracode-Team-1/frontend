@@ -20,6 +20,7 @@ export default function PrintCv() {
     );
     const body = await response.json();
     console.log(body);
+    setAllSkills(body.map((s) => s.sk_name).join(", "));
     setCvId(body);
   }, []);
 
