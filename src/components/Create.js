@@ -16,6 +16,7 @@ export default function Create() {
   const [linkProject, setLinkProject] = React.useState("");
   const [skills, setSkills] = React.useState([]);
   const [cvEmail, setCvEmail] = React.useState(cookies.get("email"));
+ 
 
   const closedSesion = () => {
     cookies.remove("email", { path: "/" });
@@ -25,6 +26,8 @@ export default function Create() {
     window.location.href = "./curriculum";
   };
   console.log(cvEmail);
+
+
   const registerCv = () => {
     console.log(
       "name: ",
@@ -42,7 +45,8 @@ export default function Create() {
       "cvEmail: ",
       cvEmail
     );
-    const url = "https://miprimercurriculum-backend.herokuapp.com/createcv";
+    
+    const url = "http://localhost:3001/createcv";
     const register = {
       name: name,
       description: description,
