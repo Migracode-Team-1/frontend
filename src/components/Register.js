@@ -18,7 +18,7 @@ export default function Register() {
   const passwordMd5 = md5(password);
 
   const connect = async () => {
-    const url = "https://miprimercurriculum-backend.herokuapp.com/register";
+    const url = "http://localhost:3001/register";
     const register = {
       email: email,
       password: passwordMd5,

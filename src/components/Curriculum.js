@@ -11,7 +11,7 @@ export default function Curriculum() {
   const [cvList, setCvList] = React.useState([]);
   useEffect(async () => {
     const response = await fetch(
-      `https://miprimercurriculum-backend.herokuapp.com/cvlist/${cookies.get("email")}`
+      `http://localhost:3001/cvlist/${cookies.get("email")}`
     );
     const body = await response.json();
     console.log(body);

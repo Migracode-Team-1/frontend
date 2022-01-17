@@ -17,7 +17,7 @@ export default function Login() {
   const passwordMd5 = md5(password);
 
   const connect = async () => {
-    const url = "https://miprimercurriculum-backend.herokuapp.com/login";
+    const url = "http://localhost:3001/login";
     const login = { email: email, password: passwordMd5 };
     const response = await fetch(url, {
       method: "POST",
