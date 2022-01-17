@@ -11,13 +11,14 @@ const cookies = new Cookies();
 export default function Create() {
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [titleProject, setTitleProject] = React.useState("");
+  const [titleProject, setTitleProject] = React.useState([]);
   const [descriptionProject, setDescriptionProject] = React.useState("");
   const [linkProject, setLinkProject] = React.useState("");
   const [skills, setSkills] = React.useState([]);
   const [cvEmail, setCvEmail] = React.useState(cookies.get("email"));
- 
+  const [newProject, setNewProject] = React.useState([]);
 
+  console.log("title",titleProject)
   const closedSesion = () => {
     cookies.remove("email", { path: "/" });
     window.location.href = "./";
@@ -27,6 +28,13 @@ export default function Create() {
   };
   console.log(cvEmail);
 
+  const addProjects = () => {
+    if(newProject.length < 3){
+    setNewProject( newProject.concat(newProject.length+1) )
+  }else{alert("No puedes agregar mas proyectos")}
+
+    console.log(newProject);
+  }
 
   const registerCv = () => {
     console.log(
@@ -45,7 +53,7 @@ export default function Create() {
       "cvEmail: ",
       cvEmail
     );
-    
+
     const url = "http://localhost:3001/createcv";
     const register = {
       name: name,
@@ -145,6 +153,38 @@ export default function Create() {
                   setValue={setLinkProject}
                 />
               </div>
+              {newProject ? newProject.map((index)=> <div className="row g-3" key={index+1} ><div className="col">
+                <label for="formGroupExampleInput" className="form-label">
+                  Título del Proyecto
+                </label>
+                <Input
+                  placeHolder="Escribe nombre de Proyecto"
+                  setValue={setTitleProject}
+                />
+              </div>
+              <div className="col">
+                <label for="formGroupExampleInput" className="form-label">
+                  Descripción del Proyecto
+                </label>
+                <Input
+                  placeHolder="Escribe breve descripción del proyecto"
+                  setValue={setDescriptionProject}
+                />
+              </div>
+              <div className="mb-3">
+                <label for="formGroupExampleInput" className="form-label">
+                  URL
+                </label>
+                <Input
+                  placeHolder="URL del Proyecto"
+                  setValue={setLinkProject}
+                />
+              </div>
+              </div> ) : null}
+              <div className="mb-3">
+                <Button toggle="Agregar Proyecto" classBtn="btn-primary" actionBtn={addProjects} ></Button>
+              </div>
+              
               <div className="row g-1">
                 <div className="col-md-4">
                   <Tags tags={skills} setTags={setSkills} />

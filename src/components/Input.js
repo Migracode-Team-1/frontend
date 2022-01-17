@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Input({placeHolder,setValue,typeInput="text"}) {
+export default function Input({placeHolder,setValue,typeInput="text", va=''}) {
 
   
 
