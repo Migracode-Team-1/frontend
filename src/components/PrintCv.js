@@ -12,6 +12,7 @@ const cookies = new Cookies();
 export default function PrintCv() {
   const [cvId, setCvId] = React.useState([]);
   const [pdf, setPdf] = React.useState(false);
+  const [allSkills, setAllSkills] = React.useState("");
 
   useEffect(async () => {
     const response = await fetch(
@@ -31,7 +32,7 @@ export default function PrintCv() {
     window.location.href = "./curriculum";
   };
   console.log(cookies.get("curriculum_id"));
-  console.log(cvId);
+
   if (!cookies.get("email")) {
     window.location.href = "./";
   } else {
@@ -68,13 +69,12 @@ export default function PrintCv() {
             </div>
             <div className="col p-5">
               {/* <h5>CV</h5> */}
-             
-                <>
-                 <PDFViewer style={{ width: "100%", height: "60vh" }}>
-                  <Printpdf cv={cvId[0]} />
-                </PDFViewer>
-                </>
-              
+              {
+                allSkills ? <>
+                              <PDFViewer style={{ width: "100%", height: "60vh" }}>
+                                <Printpdf cv={cvId[0]} skills={allSkills} />
+                              </PDFViewer>
+                            </> : <h1>CARGANDO...</h1>}
             </div>
           </div>
           <Footer></Footer>

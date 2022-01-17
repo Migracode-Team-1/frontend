@@ -16,6 +16,7 @@ export default function Create() {
   const [linkProject, setLinkProject] = React.useState("");
   const [skills, setSkills] = React.useState([]);
   const [cvEmail, setCvEmail] = React.useState(cookies.get("email"));
+ 
 
   const closedSesion = () => {
     cookies.remove("email", { path: "/" });
