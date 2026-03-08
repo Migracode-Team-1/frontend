@@ -9,7 +9,7 @@ import {
 } from "@react-pdf/renderer";
 import Fondo from "../img/Fondo.png";
 
-export default function Printpdf({ cv, skills }) {
+export default function Printpdf({ cv }) {
   const styles = StyleSheet.create({
     page: {
       padding: 30,
@@ -68,7 +68,7 @@ export default function Printpdf({ cv, skills }) {
           <Text style={styles.text}>{cv ? cv.description : "..."}</Text>
           <Text style={styles.text}>{cv ? cv.link : "..."}</Text>
           <Text style={styles.subtitles}>{cv ? "Habilidades:" : "..."}</Text>
-          <Text style={styles.text}>{cv ? skills : "..."}</Text>
+          <Text style={styles.text}>{cv ? cv.sk_name : "..."}</Text>
         </View>
       </Page>
     </Document>

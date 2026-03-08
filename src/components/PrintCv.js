@@ -12,14 +12,13 @@ const cookies = new Cookies();
 export default function PrintCv() {
   const [cvId, setCvId] = React.useState([]);
   const [pdf, setPdf] = React.useState(false);
-  const [allSkills, setAllSkills] = React.useState("");
 
   useEffect(async () => {
     const response = await fetch(
-      `http://localhost:3001/curriculum/${cookies.get("curriculum_id")}`
+      `https://miprimercurriculum-backend.herokuapp.com/curriculum/${cookies.get("curriculum_id")}`
     );
     const body = await response.json();
-    setAllSkills(body.map((s) => s.sk_name).join(", "));
+    console.log(body);
     setCvId(body);
   }, []);
 
@@ -32,7 +31,7 @@ export default function PrintCv() {
     window.location.href = "./curriculum";
   };
   console.log(cookies.get("curriculum_id"));
-
+  console.log(cvId);
   if (!cookies.get("email")) {
     window.location.href = "./";
   } else {
@@ -69,12 +68,13 @@ export default function PrintCv() {
             </div>
             <div className="col p-5">
               {/* <h5>CV</h5> */}
-              {
-                allSkills ? <>
-                              <PDFViewer style={{ width: "100%", height: "60vh" }}>
-                                <Printpdf cv={cvId[0]} skills={allSkills} />
-                              </PDFViewer>
-                            </> : <h1>CARGANDO...</h1>}
+             
+                <>
+                 <PDFViewer style={{ width: "100%", height: "60vh" }}>
+                  <Printpdf cv={cvId[0]} />
+                </PDFViewer>
+                </>
+              
             </div>
           </div>
           <Footer></Footer>

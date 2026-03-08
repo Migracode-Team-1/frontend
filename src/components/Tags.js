@@ -7,7 +7,7 @@ export default function Tags({tags, setTags}) {
   
  
   useEffect( async () => {
-    const response = await fetch(`http://localhost:3001/skills`);
+    const response = await fetch(`https://miprimercurriculum-backend.herokuapp.com/skills`);
     const body = await response.json();
     const skills = body.map(skill => skill.sk_name);
     setTags(skills);
